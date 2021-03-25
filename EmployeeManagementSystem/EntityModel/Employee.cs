@@ -25,7 +25,7 @@ namespace EmployeeManagementSystem.EntityModel
     {
         Loading = 1,
         Active = 2,
-        Inactive = 3,
+        Deactive = 3,
         New = 4,
         Old = 5,
         Resigned = 6,
