@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using EmployeeManagementSystem.Data;
 using EmployeeManagementSystem.EntityModel;
+using EmployeeManagementSystem.RepositoryPattern.Interface.IUnitOfWork;
+using EmployeeManagementSystem.RepositoryPattern.Repository.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,6 +41,12 @@ namespace EmployeeManagementSystem
                 options.Password.RequiredUniqueChars = 1;
             }).AddEntityFrameworkStores<AppDbContext>();
 
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IImageProcessing, ImageProcessing>();
+
+            // initializing Automapper
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddControllersWithViews();
         }
 
@@ -65,7 +74,7 @@ namespace EmployeeManagementSystem
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Department}/{action=Index}/{id?}");
             });
         }
     }

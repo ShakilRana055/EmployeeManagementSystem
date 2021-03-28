@@ -18,5 +18,6 @@ namespace EmployeeManagementSystem.EntityModel
         Late = 2,
         EarlyOut = 3,
         Out = 4,
+        Absent = 5,
     }
 }

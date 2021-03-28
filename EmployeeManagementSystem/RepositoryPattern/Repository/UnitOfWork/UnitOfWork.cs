@@ -1,5 +1,7 @@
 ﻿using EmployeeManagementSystem.Data;
+using EmployeeManagementSystem.RepositoryPattern.Interface.GeneralInterface;
 using EmployeeManagementSystem.RepositoryPattern.Interface.IUnitOfWork;
+using EmployeeManagementSystem.RepositoryPattern.Repository.GeneralRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,10 @@ namespace EmployeeManagementSystem.RepositoryPattern.Repository.UnitOfWork
         public UnitOfWork(AppDbContext databaseConnection)
         {
             context = databaseConnection;
-            // Employee = new EmployeeRepository(context);
+
+            #region Assigning Variable
+            Department = new DepartmentRepository(context);
+            #endregion
         }
 
         #region SaveChanges
@@ -27,6 +32,6 @@ namespace EmployeeManagementSystem.RepositoryPattern.Repository.UnitOfWork
         }
         #endregion
 
-        //public IEmployeeRepository Employee {get; private set;}
+        public IDepartmentRepository Department {get; private set;}
     }
 }
