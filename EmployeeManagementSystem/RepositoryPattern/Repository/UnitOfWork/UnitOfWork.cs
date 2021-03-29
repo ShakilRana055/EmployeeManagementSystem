@@ -18,6 +18,7 @@ namespace EmployeeManagementSystem.RepositoryPattern.Repository.UnitOfWork
 
             #region Assigning Variable
             Department = new DepartmentRepository(context);
+            CompanyInformation = new CompanyInformationRepository(context);
             #endregion
         }
 
@@ -33,5 +34,6 @@ namespace EmployeeManagementSystem.RepositoryPattern.Repository.UnitOfWork
         #endregion
 
         public IDepartmentRepository Department {get; private set;}
+        public ICompanyInformationRepository CompanyInformation { get; private set;}
     }
 }

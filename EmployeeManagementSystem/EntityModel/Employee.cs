@@ -13,6 +13,9 @@ namespace EmployeeManagementSystem.EntityModel
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
+        public string Designation { get; set; }
+        public int? DepartmentId { get; set; }
+        public Department Department { get; set; }
         public string BirthDate { get; set; }
         public string JoiningDate { get; set; }
         public string NID { get; set; }
