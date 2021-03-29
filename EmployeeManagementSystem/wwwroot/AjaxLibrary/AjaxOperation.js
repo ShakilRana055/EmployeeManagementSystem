@@ -1,7 +1,7 @@
 ﻿class AjaxOperation {
     constructor() { }
 
-    SaveAjaxWithPhoto(destination, jsonData) {
+    SaveAjax(destination, jsonData) {
         let data;
         $.ajax({
             url: destination,
@@ -17,12 +17,11 @@
         return data;
     }
 
-    SaveAjax(destination, jsonData) {
+    DeleteAjaxById(destination, id) {
         let data;
         $.ajax({
             url: destination,
-            type: "POST",
-            data: jsonData,
+            data: ({ "id": id }),
             async: false,
             success: function (response) {
                 data = response;
@@ -31,11 +30,11 @@
         return data;
     }
 
-    DeleteAjaxById(destination, jsonData) {
+    GetAjaxById(destination, id) {
         let data;
         $.ajax({
             url: destination,
-            data: ({ "id": jsonData }),
+            data: ({ "id": id }),
             async: false,
             success: function (response) {
                 data = response;
@@ -153,7 +152,7 @@ class TostrMessage {
         response === true ? toastr.success("Successfully Deleted", "Success!") :
             toastr.error("Something Went Wrong!", "Error!");
     }
-    EditedMessage(response) {
+    UpdatedMessage(response) {
         response === true ? toastr.success("Successfully Updated", "Success!") :
             toastr.error("Something Went Wrong!", "Error!");
     }

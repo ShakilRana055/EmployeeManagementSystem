@@ -20,6 +20,7 @@ namespace EmployeeManagementSystem.Controllers
             context = unitOfWork;
             mapper = mapperVariable;
         }
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -37,16 +38,21 @@ namespace EmployeeManagementSystem.Controllers
             return Json(false);
         }
 
+        [HttpPost]
         public IActionResult Update(DepartmentVM model)
         {
             var department = context.Department.GetById(model.Id);
             if(department != null)
             {
-                department = mapper.Map<DepartmentVM, Department>(model);
+                department.Name = model.Name;
+                department.Code = model.Code;
+                department.Description = model.Description;
+                department.UpdatedDate = System.DateTime.Now;
                 return context.Save() > 0 ? Json(true) : Json(false);
             }
             return Json(false);
         }
+        [HttpGet]
         public IActionResult Delete(int id)
         {
             var department = context.Department.GetById(id);
@@ -58,6 +64,7 @@ namespace EmployeeManagementSystem.Controllers
             return Json(false);
         }
 
+        [HttpPost]
         public IActionResult DepartmentList()
         {
             var draw = Request.Form["draw"].FirstOrDefault();
