@@ -16,6 +16,8 @@ namespace EmployeeManagementSystem.EntityModel
         public string Designation { get; set; }
         public int? DepartmentId { get; set; }
         public Department Department { get; set; }
+        public int? SalaryStructureId { get; set; }
+        public SalaryStructure SalaryStructure { get; set; }
         public string BirthDate { get; set; }
         public string JoiningDate { get; set; }
         public string NID { get; set; }
@@ -32,5 +34,11 @@ namespace EmployeeManagementSystem.EntityModel
         New = 4,
         Old = 5,
         Resigned = 6,
+    }
+
+    public enum Gender
+    {
+        Male = 1,
+        Female = 2,
     }
 }

@@ -19,6 +19,8 @@ namespace EmployeeManagementSystem.RepositoryPattern.Repository.UnitOfWork
             #region Assigning Variable
             Department = new DepartmentRepository(context);
             CompanyInformation = new CompanyInformationRepository(context);
+            Employee = new EmployeeRepository(context);
+            SalaryStructure = new SalaryStructureRepository(context);
             #endregion
         }
 
@@ -33,7 +35,11 @@ namespace EmployeeManagementSystem.RepositoryPattern.Repository.UnitOfWork
         }
         #endregion
 
+        #region Implementation
         public IDepartmentRepository Department {get; private set;}
         public ICompanyInformationRepository CompanyInformation { get; private set;}
+        public IEmployeeRepository Employee { get; private set;}
+        public ISalaryStructureRepository SalaryStructure { get; private set;}
+        #endregion
     }
 }

@@ -11,5 +11,7 @@ namespace EmployeeManagementSystem.RepositoryPattern.Interface.IUnitOfWork
         int Save();
         public IDepartmentRepository Department { get; }
         public ICompanyInformationRepository CompanyInformation { get; }
+        public IEmployeeRepository Employee { get; }
+        public ISalaryStructureRepository SalaryStructure { get; }
     }
 }

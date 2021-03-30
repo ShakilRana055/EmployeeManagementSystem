@@ -13,6 +13,9 @@ namespace EmployeeManagementSystem.HelperAndConstant
         public AutoMapper()
         {
             CreateMap<DepartmentVM, Department>();
+            CreateMap<EmployeeVM, Employee>();
+            CreateMap<SalaryStructureVM, SalaryStructure>();
+
         }
     }
 }

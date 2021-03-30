@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewData["Title"] = "EmployeeList";
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+}
+
+<style>
+    .odd {
+        background-color: #b3ffff;
+    }
+
+    .even {
+        background-color: #b3b3ff;
+    }
+
+    .textAlign {
+        text-align: center;
+    }
+    .leftAlign{
+        text-align:justify,left;
+        font-weight:bolder;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-7">
+        <form id="departmentCreatForm" enctype="multipart/form-data">
+            <div class="card">
+                <div id="headingOne" class="card-header bg-blue1">
+                    <button type="button" data-toggle="collapse" data-target="#Collapse" aria-expanded="true" class="text-left m-0 p-0 btn btn-block" style="box-shadow: none;">
+                        <h5 class="m-0 p-0" style="color: #fff;">Employee List</h5>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div id="Collapse" class="collapse show table-responsive">
+                        <table class="table table-hover table-bordered" id="employeeList">
+                            <thead style="background-color: #ffd9b3;">
+                                <tr>
+                                    <th>Info</th>
+                                    <th>Photo</th>
+                                    <th>Gross Salary</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-5">
+        <div class="card">
+            <div id="headingTwo12" class="card-header bg-blue1">
+                <button type="button" data-toggle="headingTwo45" data-target="#headingTwo" aria-expanded="true" class="text-left m-0 p-0 btn btn-block" style="box-shadow: none;">
+                    <h5 class="m-0 p-0" style="color: #fff;">Information</h5>
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="headingTwo" class="headingTwo45 show">
+                    <canvas id="employeePieChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/project-js/employee-list.js"></script>
+}

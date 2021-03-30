@@ -10,8 +10,6 @@ namespace EmployeeManagementSystem.EntityModel
     {
         public int Id { get; set; }
         public string EmployeeId { get; set; }
-        public int? EmployeeIdPk { get; set; }
-        public Employee Employee { get; set; }
         [Column(TypeName = "decimal(16,2)")]
         public decimal BasicSalary { get; set; }
         [Column(TypeName = "decimal(16,2)")]

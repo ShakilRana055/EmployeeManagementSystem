@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿
+@inject SignInManager<ApplicationUser> signInManager
+@inject UserManager<ApplicationUser> userManager
+@{
+    var userInformation = await userManager.GetUserAsync(User);
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -54,6 +61,7 @@
                 <span>
                     <img src="~/layout/assets/images/logo-sm.png" alt="logo-small" class="logo-sm">
                 </span>
+                EmployeeManagement
             </a>
         </div>
         <!--end logo-->
@@ -65,8 +73,8 @@
                     <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
                        aria-haspopup="false" aria-expanded="false">
 
-                        <img id="userImage" src="~/favicon.ico" alt="profile-user" class="rounded-circle" />
-                        <span class="ml-1 nav-user-name hidden-sm" id="userName"> Admin<i class="mdi mdi-chevron-down"></i> </span>
+                        <img id="userImage" src="@userInformation.PhotoUrl" alt="profile-user" class="rounded-circle" />
+                        <span class="ml-1 nav-user-name hidden-sm" id="userName"> @userInformation.EmployeeId <i class="mdi mdi-chevron-down"></i> </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <form asp-action="Logout" asp-controller="Account" method="post">
@@ -171,6 +179,7 @@
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a asp-controller="Department" asp-action="Index">Department Setup</a></li>
                                     <li><a asp-controller="Employee" asp-action="CreateEmployee">Add Employee</a></li>
+                                    <li><a asp-controller="Employee" asp-action="EmployeeList">Employee List</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -372,7 +381,7 @@
             </div><!-- container -->
 
             <footer class="footer text-center text-sm-left">
-                &copy; @DateTime.Now.Year Point of Sale
+                &copy; @DateTime.Now.Year Employee Management system
 
                 <span class="text-muted d-none d-sm-inline-block float-right">Created <i class="mdi mdi-heart text-danger"></i> by Shakil Rana</span>
             </footer><!--end footer-->
@@ -441,7 +450,7 @@
 
     @* sweet alert2 *@
     <script src="~/lib/bootstrap-sweetalert/sweetalert.js"></script>
-    
+
     @* block ui js *@
     <script src="~/layout/assets/plugins/block-ui/block-UI.js"></script>
     <script src="~/layout/assets/plugins/chartjs/chart.min.js"></script>
