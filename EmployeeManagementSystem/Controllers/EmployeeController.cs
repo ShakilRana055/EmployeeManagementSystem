@@ -8,12 +8,14 @@ using EmployeeManagementSystem.EntityModel;
 using EmployeeManagementSystem.HelperAndConstant;
 using EmployeeManagementSystem.Models;
 using EmployeeManagementSystem.RepositoryPattern.Interface.IUnitOfWork;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagementSystem.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly IUnitOfWork context;
@@ -56,8 +58,9 @@ namespace EmployeeManagementSystem.Controllers
             employee.SalaryStructureId = salaryStructure.Id;
             employee.EmployeeStatus = EmployeeStatus.Active;
             employee.SalaryStructure.EmployeeId = model.EmployeeId;
+            employee.SalaryStructure.CreatedBy = User.Identity.Name;
 
-            if(model.Photo != null)
+            if (model.Photo != null)
                 employee.PhotoUrl = UploadImage("EmployeeImage", model.Photo, "employee\\photo");
             if(model.NIDPhoto != null)
                 employee.NIDUrl = UploadImage("EmployeeNID", model.NIDPhoto, "employee\\nid");

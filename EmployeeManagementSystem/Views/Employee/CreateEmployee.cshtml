@@ -20,7 +20,7 @@
                                 <div class="form-group">
                                     <label asp-for="Department" class="control-label"></label>
                                     <select asp-for="DepartmentId" asp-items="@Model.Department" class="form-control select2">
-                                        <option>---select---</option>
+                                        <option value="">---select---</option>
                                     </select>
                                     <span asp-validation-for="Department" class="text-danger"></span>
                                 </div>

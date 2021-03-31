@@ -179,7 +179,12 @@
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a asp-controller="Department" asp-action="Index">Department Setup</a></li>
                                     <li><a asp-controller="Employee" asp-action="CreateEmployee">Add Employee</a></li>
-                                    <li><a asp-controller="Employee" asp-action="EmployeeList">Employee List</a></li>
+                                    @{
+                                        if (await userManager.IsInRoleAsync(userInformation, RoleHelper.SuperAdmin))
+                                        {
+                                            <li><a asp-controller="Employee" asp-action="EmployeeList">Employee List</a></li>
+                                        }
+                                    }
                                 </ul>
                             </li>
                         </ul>

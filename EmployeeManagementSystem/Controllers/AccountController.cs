@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EmployeeManagementSystem.EntityModel;
+using EmployeeManagementSystem.HelperAndConstant;
 using EmployeeManagementSystem.Models;
 using EmployeeManagementSystem.RepositoryPattern.Interface.IUnitOfWork;
 using Microsoft.AspNetCore.Identity;
@@ -60,12 +61,24 @@ namespace EmployeeManagementSystem.Controllers
                 await userManager.CreateAsync(user, "superadmin@123");
             }
         }
+        private async Task AssigningToRole()
+        {
+            var userInformation = await userManager.FindByEmailAsync("superadmin@gmail.com");
+            var roleExist = await userManager.IsInRoleAsync(userInformation, RoleHelper.SuperAdmin);
+            if (!roleExist)
+            {
+                var role = await roleManager.FindByNameAsync(RoleHelper.SuperAdmin);
+                await userManager.AddToRoleAsync(userInformation, role.Name);
+            }
+            
+        }
         #endregion
         
         public async Task<IActionResult> Login()
         {
             await SpecialUser();
             await CreateDefaultRole();
+            await AssigningToRole();
             return View();
         }
 

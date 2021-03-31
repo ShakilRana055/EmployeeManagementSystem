@@ -39,7 +39,9 @@
     });
 
     selector.departmentId.change(function () {
-        employee.EmployeeId($(this).val());
+        if ($(this).val() !== "") {
+            employee.EmployeeId($(this).val());
+        }
     });
 
 })();

@@ -47,6 +47,12 @@ namespace EmployeeManagementSystem
             // initializing Automapper
             services.AddAutoMapper(typeof(Startup));
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.Name = "EmployeeManagementSystem";
+                options.ExpireTimeSpan = TimeSpan.FromDays(7);
+            });
+
             services.AddControllersWithViews();
         }
 
